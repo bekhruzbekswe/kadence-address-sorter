@@ -51,3 +51,7 @@ Your tool should throw an exception if any addresses are invalid.
 You can supply the addresses to the application however you wish e.g. via a text file, inputting them manually in a text area on an HTML form etc. The example addresses you choose should showcase all the functionality of your application.
 
 We recommend using a sorting function which is already built-in to your chosen programming language e.g. in PHP you could use usort or uasort.
+
+## Submitted Project Implementation
+
+See [IMPLEMENTATION.md](IMPLEMENTATION.md) for technical details, design decisions, and usage instructions.
