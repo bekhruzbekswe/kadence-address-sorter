@@ -17,5 +17,9 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "sort": "php sort-addresses.php",
+        "test": "phpunit"
     }
 }
