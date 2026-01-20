@@ -100,4 +100,15 @@ final class AddressParserTest extends TestCase
 
         $this->assertSame($raw, $address->getRaw());
     }
+
+    #[Test]
+    public function parsesAddressWithCountyPrefixInTownName(): void
+    {
+        $address = $this->parser->parse('123 Main St, Countyville, BT1 1AA');
+
+        $this->assertSame('Countyville', $address->getTown());
+        $this->assertSame('BT1 1AA', $address->getPostcode());
+        $this->assertSame('Main St', $address->getStreetName());
+        $this->assertSame(123, $address->getStreetNumber());
+    }
 }

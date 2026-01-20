@@ -11,7 +11,7 @@ final class AddressParser
 {
     private const POSTCODE_PATTERN = '/^BT\d{1,2}\s\d[A-Z]{2}$/';
     private const NUMBER_NAME_PATTERN = '/^([\d.]+)\s+(.+)$/';
-    private const COUNTY_PREFIXES = ['Co.', 'County'];
+    private const COUNTY_PREFIXES = ['Co.', 'County '];
 
     public function parse(string $raw): Address
     {
