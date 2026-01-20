@@ -8,6 +8,9 @@ use App\Service\AddressParser;
 use App\Service\AddressSorter;
 use App\Exception\InvalidAddressException;
 
+/** @var array<int, string> $argv */
+global $argc, $argv;
+
 if ($argc < 2) {
     echo "Usage: php sort-addresses.php <filename>\n";
     exit(1);

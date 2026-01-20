@@ -37,7 +37,7 @@ final class AddressParser
         $streetPart = array_pop($parts);
         $propertyPart = array_pop($parts);
 
-        [$streetNumber, $streetName] = $this->parseStreetComponent($raw, $streetPart);
+        [$streetNumber, $streetName] = $this->parseStreetComponent($raw, (string) $streetPart);
         [$propertyNumber, $propertyName] = $this->parsePropertyComponent($propertyPart);
 
         return new Address(
@@ -51,19 +51,25 @@ final class AddressParser
         );
     }
 
-    /** @return array{string, array<string>} */
+    /**
+     * @param array<string> $parts
+     * @return array{string, array<string>}
+     */
     private function extractPostcode(string $raw, array $parts): array
     {
         $postcode = array_pop($parts);
 
-        if (!preg_match(self::POSTCODE_PATTERN, $postcode)) {
+        if ($postcode === null || !preg_match(self::POSTCODE_PATTERN, $postcode)) {
             throw InvalidAddressException::forAddress($raw, 'Invalid postcode format');
         }
 
         return [$postcode, $parts];
     }
 
-    /** @return array<string> */
+    /**
+     * @param array<string> $parts
+     * @return array<string>
+     */
     private function stripCounty(array $parts): array
     {
         if (empty($parts)) {
@@ -73,7 +79,7 @@ final class AddressParser
         $last = array_last($parts);
 
         foreach (self::COUNTY_PREFIXES as $prefix) {
-            if (stripos($last, $prefix) === 0) {
+            if (is_string($last) && stripos($last, $prefix) === 0) {
                 array_pop($parts);
                 return $parts;
             }
