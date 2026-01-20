@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Model;
 
-class Address
+/**
+ * Immutable value object.
+ */
+final class Address
 {
     public function __construct(
         private string $raw,
@@ -13,7 +16,7 @@ class Address
         private int $streetNumber,
         private string $postcode,
         private ?string $propertyName = null,
-        private ?int $propertyNumber = null
+        private ?float $propertyNumber = null
     ) {
     }
 
@@ -42,7 +45,7 @@ class Address
         return $this->propertyName;
     }
 
-    public function getPropertyNumber(): ?int
+    public function getPropertyNumber(): ?float
     {
         return $this->propertyNumber;
     }
