@@ -62,6 +62,9 @@ composer sort addresses.txt
 **Decision:** Null property names → empty string, null property numbers → 0  
 **Rationale:** Addresses without properties sort before those with properties alphabetically
 
+### 7. Natural Sorting Suggestion
+**Note:** Used alphabetic and numeric sorting on request but I would suggest using natural sorting for address.
+
 ---
 
 ## Sort Priority
